@@ -1,0 +1,17 @@
+id: SetRandomNumVar
+name: Set Random Number Variable Plugin
+version: 1.0
+author_name: Hideki Abe
+author_link: https://www.anothersky.pw/
+tags:
+    function:
+        SetRandomNumVar:
+            handler: >
+                sub {
+                    my($ctx, $args) = @_;
+                    my $min = $args->{ range }->[0];
+                    my $max = $args->{ range }->[1];
+                    # http://perl.wansdream.net/article/114897420.html
+                    my $ret = int( ( rand() * ( $max - $min + 1 ) ) + $min );
+                    $ctx->var( $args->{ name }, $ret );
+                }
